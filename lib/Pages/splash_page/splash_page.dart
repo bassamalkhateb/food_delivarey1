@@ -1,12 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:food/Pages/home/home_bage_sec.dart';
+import 'package:food/Pages/home/home_page_sec.dart';
 import 'package:food/routes/routeshelper.dart';
 import 'package:get/get.dart';
 
 
-import 'package:get/get.dart';import '../../controllers/popular_prodcut_controller.dart';
+import 'package:get/get.dart';
+import '../../controllers/popular_prodcut_controller.dart';
 import '../../controllers/recommended_product_controller.dart';
 
 class SplashPage extends StatefulWidget {

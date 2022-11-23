@@ -2,9 +2,11 @@ import 'package:food/Pages/Food/popular_food_ditels.dart';
 import 'package:food/Pages/Food/recommend_food_ditels.dart';
 import 'package:food/Pages/cart/cart_page.dart';
 import 'package:food/Pages/home/home_bage_food.dart';
-import 'package:food/Pages/home/home_bage_sec.dart';
+import 'package:food/Pages/home/home_page_sec.dart';
 import 'package:food/Pages/splash_page/splash_page.dart';
 import 'package:get/get.dart';
+
+
 
 class RoutesHelper{
   static const String splashFood ="/splash-food";

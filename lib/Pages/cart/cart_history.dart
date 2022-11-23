@@ -48,7 +48,7 @@ class CartHistory extends StatelessWidget {
                 AppIcon(
                   icon: Icons.shopping_cart_outlined,
                   iconColor: AppColors.mainColor,
-                  backgroundColor: AppColors.yellowColor,
+                  backgroundColor: AppColors .yellowColor,
                 )
               ],
             ),
