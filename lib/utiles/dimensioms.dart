@@ -5,6 +5,8 @@ class Dimensions{
   static double PageViwe = screenHeight/2.64;
   static double PageViweContainer = screenHeight/3.84;
   static double PageViweTextContainer = screenWidth/3.4;
+
+
   static double Height10= screenHeight/84.4;
   static double Height20= screenHeight/42.2;
   static double Height15= screenHeight/56.27;

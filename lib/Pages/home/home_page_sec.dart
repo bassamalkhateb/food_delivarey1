@@ -3,6 +3,8 @@ import 'package:food/Pages/cart/cart_history.dart';
 import 'package:food/Pages/home/home_bage_food.dart';
 import 'package:food/utiles/colors.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+
+import '../profile/profile__page.dart';
 class HomePageSec extends StatefulWidget {
   const HomePageSec({Key? key}) : super(key: key);
 
@@ -24,7 +26,7 @@ void initState(){
 
       Container(child: Center(child: Text('page'),),),
       CartHistory(),
-      Container(child: Center(child: Text('next next page'),),),
+      ProfilePage(),
 
     ];
   }

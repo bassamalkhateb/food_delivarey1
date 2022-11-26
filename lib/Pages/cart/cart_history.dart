@@ -42,6 +42,25 @@ class CartHistory extends StatelessWidget {
 
     List<int> itemsPreOrder = cartItemsOrderToList();
     var listCounter = 0;
+    Widget timeWidget (int index){
+      var outputDate=DateTime.now().toString();
+      if(index<getCartHistoryList.length){
+        DateTime pareseDate = DateFormat(
+            'yyyy-MM-dd HH:mm:ss')
+            .parse(
+            getCartHistoryList[listCounter]
+                .time!);
+        var inputDate = DateTime.parse(
+            pareseDate.toString());
+        var outputFormat =
+        DateFormat('MM/dd/yyyy hh:mm a');
+        var outputDate =
+        outputFormat.format(inputDate);
+        
+        
+      }
+      return BigText(text: outputDate);
+    }
     return Scaffold(
       body: Column(
         children: [
@@ -86,20 +105,7 @@ class CartHistory extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      (() {
-                                        DateTime pareseDate = DateFormat(
-                                                'yyyy-MM-dd HH:mm:ss')
-                                            .parse(
-                                                getCartHistoryList[listCounter]
-                                                    .time!);
-                                        var inputDate = DateTime.parse(
-                                            pareseDate.toString());
-                                        var outputFormat =
-                                            DateFormat('MM/dd/yyyy hh:mm a');
-                                        var outputDate =
-                                            outputFormat.format(inputDate);
-                                        return BigText(text: outputDate);
-                                      }()),
+                                      timeWidget(listCounter),
                                       SizedBox(
                                         height: Dimensions.Height10,
                                       ),
