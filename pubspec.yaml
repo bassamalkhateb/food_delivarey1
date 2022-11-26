@@ -36,6 +36,7 @@ dependencies:
   http: ^0.13.5
   persistent_bottom_nav_bar:
   shared_preferences: ^2.0.15
+  intl: any
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -70,6 +71,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/
+    - assets/empty-cart.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -24,6 +24,7 @@ class CartRepo {
     });
     sharedPreferences.setStringList("Cart-list", cart);
     //print(sharedPreferences.getStringList("Cart-list"));
+    getCartList();
   }
   List<CartMoudel> getCartList(){
 
@@ -32,7 +33,7 @@ class CartRepo {
       carts= sharedPreferences.getStringList("cart-List")!;
     }
       List<CartMoudel> cartList=[];
-    carts.forEach((element)=>  CartMoudel.fromJson(jsonDecode(element)));
+    carts.forEach((element)=> cartList.add(CartMoudel.fromJson(jsonDecode(element) )));
     return cartList;
   }
   List<CartMoudel> getCartHistoryList(){
@@ -42,7 +43,7 @@ class CartRepo {
     }
     List<CartMoudel>cartListHistory=[];
     cartHistory.forEach((element) =>cartListHistory.add(CartMoudel.fromJson(jsonDecode(element))));
-    print(getCartHistoryList().length);
+    //print(getCartHistoryList().length);
     return cartListHistory;
   }
   void addToCartHistory(){
@@ -54,8 +55,8 @@ class CartRepo {
     }
     removeCart();
     sharedPreferences.setStringList("cart-history-list", cartHistory);
-    print('history is '+getCartHistoryList().length.toString());
-    print(cartHistory);
+    // print('history is '+getCartHistoryList().length.toString());
+    // print(cartHistory);
 
   }
   void removeCart(){

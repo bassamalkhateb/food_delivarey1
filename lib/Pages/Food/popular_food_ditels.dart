@@ -56,6 +56,8 @@ class PopularFoodDitels extends StatelessWidget {
                   GestureDetector(
                       onTap: () {
                         if(page=='cartpage') {
+                          Get.offNamed(RoutesHelper.getCartFood());
+                        }else{
                           Get.toNamed(RoutesHelper.getInitial());
                         }
                       },

@@ -100,7 +100,7 @@ class CartController extends GetxController {
           total += value.quantity!*value.price!;
         });
 
-    return total;
+    return total ;
   }
   List<CartMoudel> getCartData(){
     setCart=cartRepo.getCartList();
@@ -124,5 +124,15 @@ class CartController extends GetxController {
   List<CartMoudel> getCartHistoryList(){
     return cartRepo.getCartHistoryList();
   }
+  set setItems (Map<int, CartMoudel>setItems){
+    _items={};
+    _items=setItems;
+    update();
 
+  }
+
+  void addToCartList(){
+    cartRepo.addToCartList(getItems);
+    update();
+  }
 }
