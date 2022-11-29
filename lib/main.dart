@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food/Pages/auth/sing_in_page.dart';
+import 'package:food/Pages/auth/sing_up_page.dart';
 import 'package:food/controllers/cart_controller.dart';
 import 'package:food/controllers/popular_prodcut_controller.dart';
 import 'package:food/routes/routeshelper.dart';
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
       return GetBuilder<RecommendedProductController>(builder: (_){
         return GetMaterialApp(
           title: 'Food',
-          //home: SplashPage(),
+         //home: SingInPage(),
           debugShowCheckedModeBanner: false,
           initialRoute: RoutesHelper.getSplashFood(),
           getPages: RoutesHelper.routes,

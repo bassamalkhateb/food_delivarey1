@@ -25,6 +25,7 @@ int _cartItems =0;
 int get cartItems=>_cartItems+_quantity;
   Future<void> getPopularProductList() async {
     Response response = await popularProductRepo.getPopularProductList();
+    print(response.statusCode);
     if (response.statusCode == 200) {
       _popularProductList = [];
       _popularProductList.addAll(Product.fromJson(response.body).products);

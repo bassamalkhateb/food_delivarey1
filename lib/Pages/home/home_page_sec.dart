@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:food/Pages/auth/sing_up_page.dart';
 import 'package:food/Pages/cart/cart_history.dart';
 import 'package:food/Pages/home/home_bage_food.dart';
 import 'package:food/utiles/colors.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
+import '../auth/sing_in_page.dart';
 import '../profile/profile__page.dart';
 class HomePageSec extends StatefulWidget {
   const HomePageSec({Key? key}) : super(key: key);
@@ -23,8 +25,8 @@ void initState(){
   List<Widget> _buildScreens() {
     return [
       HomeBageFood(),
-
-      Container(child: Center(child: Text('page'),),),
+      Container(child: Center(child: Text('page 2'),),),
+      //SingInPage(),
       CartHistory(),
       ProfilePage(),
 

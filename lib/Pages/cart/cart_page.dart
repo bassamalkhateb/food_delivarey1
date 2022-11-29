@@ -3,6 +3,7 @@ import 'package:food/Pages/base/no_data_page.dart';
 import 'package:food/Widgets/App_Icon.dart';
 import 'package:food/Widgets/Big_text.dart';
 import 'package:food/Widgets/small_text.dart';
+import 'package:food/controllers/auth_controller.dart';
 import 'package:food/controllers/cart_controller.dart';
 import 'package:food/controllers/popular_prodcut_controller.dart';
 import 'package:food/controllers/recommended_product_controller.dart';
@@ -272,8 +273,12 @@ class CartPage extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         //controller.addItem(product);
+                        if(Get.find<AuthController>().userLoggedIn()){
+                          controller.addToHistory();
+                        }else{
+                           Get.toNamed(RoutesHelper.getSingInPage());
+                        }
 
-                        controller.addToHistory();
 
                       },
                       child: BigText(
