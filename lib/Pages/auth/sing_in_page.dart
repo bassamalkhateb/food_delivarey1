@@ -40,7 +40,7 @@ class SingInPage extends StatelessWidget {
       }else{
 
         authController.login(email,password).then((status){
-          print(email);
+          print(status);
           if( status.isSuccess){
             Get.toNamed(RoutesHelper.getInitial());
             print("Success login");
@@ -130,6 +130,7 @@ class SingInPage extends StatelessWidget {
              GestureDetector(
                onTap: (){
                  _login(authController);
+
                },
                child: Container(
                  width: Dimensions.screenWidth / 2,
