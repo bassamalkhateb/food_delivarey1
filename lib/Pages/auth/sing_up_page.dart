@@ -6,6 +6,7 @@ import 'package:food/Pages/base/show_custom_masseg.dart';
 import 'package:food/Widgets/Big_text.dart';
 import 'package:food/Widgets/app_text_filed.dart';
 import 'package:food/controllers/auth_controller.dart';
+import 'package:food/routes/routeshelper.dart';
 import 'package:food/utiles/colors.dart';
 import 'package:food/utiles/dimensioms.dart';
 import 'package:get/get.dart';
@@ -52,6 +53,7 @@ class SingUpPage extends StatelessWidget {
         SingUpModel singUpModel = SingUpModel(name: name, phone: phone, email: email, password: password);
          authController.regestration(singUpModel).then((status){
            if( status.isSuccess){
+             Get.toNamed(RoutesHelper.getSingInPage());
              print("Success regestration");
            }else{
              showCustomSnackBar(status.message);

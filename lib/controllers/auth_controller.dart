@@ -1,6 +1,6 @@
 import 'package:food/Moudel/ssing_up_model.dart';
 import 'package:food/data/repository/auth_repo.dart';
-import 'package:food/data/repository/response_model.dart';
+import 'package:food/Moudel/response_model.dart';
 import 'package:get/get.dart';
 
 class AuthController extends GetxController implements GetxService {
@@ -31,11 +31,11 @@ class AuthController extends GetxController implements GetxService {
     update();
     return responseModel;
   }
-  Future<ResponseModel>  login(String email, String password) async {
+  Future<ResponseModel>  login(String phone, String password) async {
     print(authRepo.getUserToken().toString());
     _isloading = true;
     update();
-    Response response = await authRepo.login(email,password);
+    Response response = await authRepo.login(phone,password);
     late ResponseModel responseModel;
     if (response.statusCode == 200|| response.statusCode==201) {
       authRepo.saveUserToken(response.body['token']);
@@ -51,10 +51,13 @@ class AuthController extends GetxController implements GetxService {
     return responseModel;
   }
 
-  void saveUserNumberAndPassword(String email, String password)  {
-   authRepo.saveUserNumberAndPassword(email, password);
+  void saveUserNumberAndPassword(String phone, String password)  {
+   authRepo.saveUserNumberAndPassword(phone, password);
   }
   bool userLoggedIn(){
     return authRepo.userLoggedIn();
+  }
+  bool ClearSharedData(){
+    return authRepo.clearSharedData();
   }
 }

@@ -13,7 +13,7 @@ import 'data/helper/dependencies.dart' as dep;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dep.init();
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {

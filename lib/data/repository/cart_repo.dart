@@ -64,6 +64,11 @@ class CartRepo {
     cart=[];
     sharedPreferences.remove("Cart-list");
   }
+  void clearCartHistory(){
+    removeCart();
+    cartHistory=[];
+    sharedPreferences.remove("cart-history-list");
+  }
 
 
 }

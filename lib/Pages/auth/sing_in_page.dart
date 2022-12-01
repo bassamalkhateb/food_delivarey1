@@ -20,15 +20,17 @@ class SingInPage extends StatelessWidget {
   Widget build(BuildContext context) {
     var emailController = TextEditingController();
     var passwordController = TextEditingController();
+    var phoneController = TextEditingController();
     void _login(AuthController authController){
 
 
       String email = emailController.text.trim();
+      String phone = phoneController.text.trim();
       String password = passwordController.text.trim();
-       if(email.isEmpty){
+       if(phone.isEmpty){
         showCustomSnackBar('Type in your Email ', title: 'Email');
 
-      }else if(!GetUtils.isEmail(email)){
+      }else if(!GetUtils.isPhoneNumber(phone)){
         showCustomSnackBar('Type in a valid email address', title: 'Valid Email Address');
 
       }else if(password.isEmpty){
@@ -39,12 +41,13 @@ class SingInPage extends StatelessWidget {
 
       }else{
 
-        authController.login(email,password).then((status){
+        authController.login(phone,password).then((status){
 
           if( status.isSuccess){
-            Get.toNamed(RoutesHelper.getInitial());
+            Get.toNamed(RoutesHelper.getCartFood());
             print("Success login");
           }else{
+            //Get.toNamed(RoutesHelper.getCartFood());
             showCustomSnackBar(status.message);
           }
         });
@@ -95,7 +98,7 @@ class SingInPage extends StatelessWidget {
              ),
              SizedBox(height: Dimensions.Height20,),
              AppTextFiled(
-                 textController: emailController,
+                 textController: phoneController,
                  hintText: 'Email',
                  icon: Icons.email),
              SizedBox(

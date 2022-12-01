@@ -274,9 +274,11 @@ class CartPage extends StatelessWidget {
                       onTap: () {
                         //controller.addItem(product);
                         if(Get.find<AuthController>().userLoggedIn()){
+
                           controller.addToHistory();
                         }else{
                            Get.toNamed(RoutesHelper.getSingInPage());
+                            
                         }
 
 
