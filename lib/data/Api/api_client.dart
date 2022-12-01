@@ -23,15 +23,10 @@ class ApiClient extends GetConnect implements GetxService {
     };
   }
 
-  Future<Response> getData(
-    String uri,
-  ) async {
+  Future<Response> getData(String uri,) async {
     try {
-      //print(appBaseUrl + uri);
-      //var url = Uri.http('http://mvs.bslmeiyu.com', '/api/v1/products/popular');
-      //
       Response response = await get(uri);
-      print(response.body);
+      //print(response.body);
       return response;
     } catch (e) {
       return Response(statusCode: 1, statusText: e.toString());
@@ -39,13 +34,15 @@ class ApiClient extends GetConnect implements GetxService {
   }
 
   Future<Response>postData(String uri, dynamic body) async {
-    print(body.toString());
+    //print(body.toString());
     try {
       Response response = await post(uri, body,headers: _mainHeaders);
-      print(response.toString());
+     // print(response.toString());
+      print(response);
+
       return response;
     } catch (e) {
-      print(e.toString());
+
       return Response(statusCode: 1,statusText: e.toString());
     }
   }

@@ -22,7 +22,7 @@ class AuthController extends GetxController implements GetxService {
     print(response.statusCode);
     if (response.statusCode == 200) {
       authRepo.saveUserToken(response.body['token']);
-      print(response.body['token'].toString());
+      print(response.body['token']);
       responseModel = ResponseModel(true, response.body['token']);
     } else {
       responseModel = ResponseModel(false, response.statusText!);
@@ -32,17 +32,19 @@ class AuthController extends GetxController implements GetxService {
     return responseModel;
   }
   Future<ResponseModel>  login(String email, String password) async {
+    print(authRepo.getUserToken().toString());
     _isloading = true;
-   update();
+    update();
     Response response = await authRepo.login(email,password);
     late ResponseModel responseModel;
-   print(response.body);
-
     if (response.statusCode == 200|| response.statusCode==201) {
       authRepo.saveUserToken(response.body['token']);
+      print(response.body['token'].toString());
       responseModel = ResponseModel(true, response.body['token']);
     } else {
       responseModel = ResponseModel(false, response.statusText!);
+      print(response.statusCode);
+      print(response.body);
     }
     _isloading = false;
     update();

@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
-
-class SmallText extends StatelessWidget {
+class SmallText extends StatelessWidget{
   final String text;
-
   Color? color;
-
   double size;
-
   double height;
-
   SmallText(
       {Key? key,
       required this.text,

@@ -40,13 +40,12 @@ class SingInPage extends StatelessWidget {
       }else{
 
         authController.login(email,password).then((status){
-          print(status);
+
           if( status.isSuccess){
             Get.toNamed(RoutesHelper.getInitial());
             print("Success login");
           }else{
             showCustomSnackBar(status.message);
-            // print("Success login");
           }
         });
       }
@@ -129,6 +128,7 @@ class SingInPage extends StatelessWidget {
              ),
              GestureDetector(
                onTap: (){
+
                  _login(authController);
 
                },

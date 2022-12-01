@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food/Widgets/small_text.dart';
-
 import '../utiles/colors.dart';
 import '../utiles/dimensioms.dart';
 import 'Big_text.dart';
 import 'icon_text_widget.dart';
-
 class AppColumns extends StatelessWidget {
   final String text ;
   const AppColumns({Key? key, required this.text}) : super(key: key);
@@ -42,7 +40,7 @@ class AppColumns extends StatelessWidget {
               width: Dimensions.Width10,
             ),
             SmallText(text: '1122'),
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
             SmallText(text: 'Comments'),
@@ -59,7 +57,7 @@ class AppColumns extends StatelessWidget {
               text: 'Normal',
               iconColor: AppColors.iconColor1,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             IconAndText(
@@ -67,7 +65,7 @@ class AppColumns extends StatelessWidget {
               text: '1.7 KM',
               iconColor: AppColors.mainColor,
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             IconAndText(

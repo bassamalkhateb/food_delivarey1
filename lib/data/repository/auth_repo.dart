@@ -17,16 +17,15 @@ class AuthRepo {
   bool userLoggedIn(){
     return  sharedPreferences.containsKey(AppConstants.TOKEN);
   }
-  Future<String>getUserToken(String token) async {
-    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    var token = sharedPreferences.getString('token');
-    //return await sharedPreferences.getString(AppConstants.TOKEN)??"None";
-    return '?token=$token';
+  Future<String>getUserToken() async {
+
+   // var token = sharedPreferences.getString('token');
+    return await sharedPreferences.getString(AppConstants.TOKEN)??"None";
+    // return '?token=$token';
   }
 
   Future<Response> login(String email, String password) async {
-    return await apiClient.postData(
-        AppConstants.LOGIN_URL, {'email': email, 'password': password});
+    return await apiClient.postData(AppConstants.LOGIN_URL, {'email': email, 'password': password});
   }
 
   Future<bool> saveUserToken(String token) async {

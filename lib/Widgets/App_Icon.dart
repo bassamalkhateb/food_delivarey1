@@ -3,14 +3,10 @@ import 'package:food/utiles/dimensioms.dart';
 
 class AppIcon extends StatelessWidget {
   final IconData icon;
-
   final Color backgroundColor;
-
   final Color iconColor;
-
   final double size;
   final double iconSize;
-
   const AppIcon(
       {Key? key,
       required this.icon,
@@ -20,7 +16,6 @@ class AppIcon extends StatelessWidget {
       this.iconSize=16
       })
       : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,7 +28,6 @@ class AppIcon extends StatelessWidget {
       child: Icon(
         icon,
         color: iconColor,
-
         size: iconSize,
       ),
     );
