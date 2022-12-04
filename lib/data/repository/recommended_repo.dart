@@ -6,7 +6,8 @@ import 'package:http/http.dart' as http;
 class RecommendedProductRepo extends GetxService {
   final ApiClient apiClient;
   RecommendedProductRepo({required this.apiClient});
-  Future<Response> getRecommendedProductList()  {
+  Future<Response> getRecommendedProductList(){
     return  apiClient.getData(AppConstants.RECOMMEND_PRODEUCT_URL);
   }
+
 }
