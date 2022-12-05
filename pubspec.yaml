@@ -37,6 +37,9 @@ dependencies:
   persistent_bottom_nav_bar:
   shared_preferences: ^2.0.15
   intl: any
+  google_maps_flutter: any
+  geocoding: any
+  geolocator: any
 
 
   # The following adds the Cupertino Icons font to your application.

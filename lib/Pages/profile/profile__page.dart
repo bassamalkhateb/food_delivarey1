@@ -53,7 +53,7 @@ class ProfilePage extends StatelessWidget {
                       children: [
                         //name
                         ProfileWidget(
-                          bigText: BigText(text: userControoler.userModel.name,),
+                          bigText: BigText(text: userControoler.userModel!.name,),
                           appIcon: AppIcon(
                             icon: Icons.person,
                             backgroundColor: AppColors.mainColor,
@@ -66,7 +66,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                         //phone
                         ProfileWidget(
-                          bigText: BigText(text: userControoler.userModel.phone,),
+                          bigText: BigText(text: userControoler.userModel!.phone,),
                           appIcon: AppIcon(
                             icon: Icons.phone,
                             backgroundColor: AppColors.yellowColor,
@@ -79,7 +79,7 @@ class ProfilePage extends StatelessWidget {
                         ),
                         //email
                         ProfileWidget(
-                          bigText: BigText(text: userControoler.userModel.email,),
+                          bigText: BigText(text: userControoler.userModel!.email,),
                           appIcon: AppIcon(
                             icon: Icons.email_outlined,
                             backgroundColor: AppColors.paraColor,

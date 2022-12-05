@@ -5,6 +5,7 @@ import 'package:food/Widgets/Big_text.dart';
 import 'package:food/Widgets/small_text.dart';
 import 'package:food/controllers/auth_controller.dart';
 import 'package:food/controllers/cart_controller.dart';
+import 'package:food/controllers/location_controller.dart';
 import 'package:food/controllers/popular_prodcut_controller.dart';
 import 'package:food/controllers/recommended_product_controller.dart';
 import 'package:food/utiles/app_constants.dart';
@@ -272,10 +273,12 @@ class CartPage extends StatelessWidget {
                         right: Dimensions.Width20),
                     child: GestureDetector(
                       onTap: () {
-                        //controller.addItem(product);
+                        print('object');
                         if(Get.find<AuthController>().userLoggedIn()){
+                          if(Get.find<LocationController>().addressList.isEmpty){
+                            Get.toNamed(RoutesHelper.getAddressPage());
+                          }
 
-                          controller.addToHistory();
                         }else{
                            Get.toNamed(RoutesHelper.getSingInPage());
                             
