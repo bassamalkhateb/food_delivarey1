@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.food">
-   <application
+    <uses-feature android:name="android.software.leanback"
+        android:required="false" />
+    <application
+        android:hardwareAccelerated="true"
         android:label="food"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
@@ -21,9 +24,11 @@
               android:resource="@style/NormalTheme"
               />
             <meta-data android:name="com.google.android.geo.API_KEY"
-                android:value="AIzaSyBwZSO2fe-ZVY-x4bUJboNyOgcdGn5UQgI"/>
+                android:value="AIzaSyBF37XEaqQ96f3M0ygKz9hD4Tkn9I4JHw0"/>
             <intent-filter>
+
                 <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
