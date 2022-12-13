@@ -60,7 +60,7 @@ android {
 //        }
         release {
             signingConfig signingConfigs.debug
-            signingConfig signingConfigs.release
+           // signingConfig signingConfigs.release
             shrinkResources false
             minifyEnabled false
         }
