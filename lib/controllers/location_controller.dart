@@ -1,9 +1,10 @@
 import 'dart:convert';
 
 import 'package:food/data/repository/location_repo.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:geocoding/geocoding.dart';
-import 'package:geolocator/geolocator.dart';
+
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../Moudel/address_model.dart';
