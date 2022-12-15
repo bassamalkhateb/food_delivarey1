@@ -14,9 +14,9 @@ class CartRepo {
 
 
   void addToCartList(List<CartMoudel> cartList) {
-  /* sharedPreferences.remove("cart-List");
-    sharedPreferences.getStringList("cart-history-list");
-    return;*/
+  sharedPreferences.remove("cart-List");
+  sharedPreferences.getStringList("cart-history-list");
+    //return;*/
     var time = DateTime.now().toString();
     cart = [];
     cartList.forEach((element) {

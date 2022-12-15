@@ -5,6 +5,7 @@ import 'package:food/Widgets/Big_text.dart';
 import 'package:food/Widgets/profile_widget.dart';
 import 'package:food/controllers/auth_controller.dart';
 import 'package:food/controllers/cart_controller.dart';
+import 'package:food/controllers/location_controller.dart';
 import 'package:food/controllers/user_controller.dart';
 import 'package:food/routes/routeshelper.dart';
 import 'package:food/utiles/colors.dart';
@@ -91,15 +92,38 @@ class ProfilePage extends StatelessWidget {
                           height: Dimensions.Height15 * 2,
                         ),
                         //address
-                        ProfileWidget(
-                          bigText: BigText(text: "Damascuse",),
-                          appIcon: AppIcon(
-                            icon: Icons.location_on,
-                            backgroundColor: Colors.blueGrey,
-                            iconColor: Colors.white,
-                            iconSize: Dimensions.Height10 * 5 / 2,
-                            size: Dimensions.Height10 * 5,
-                          ),),
+                        GetBuilder<LocationController>(builder: (controller){
+                          if(_userLoggedIn&&controller.addressList.isEmpty){
+                            return GestureDetector(
+                              onTap: (){
+                                Get.offNamed(RoutesHelper.getAddressPage());
+                              },
+                              child: ProfileWidget(
+                              bigText: BigText(text:'Fill Address' ,),
+                              appIcon: AppIcon(
+                                icon: Icons.location_on,
+                                backgroundColor: Colors.blueGrey,
+                                iconColor: Colors.white,
+                                iconSize: Dimensions.Height10 * 5 / 2,
+                                size: Dimensions.Height10 * 5,
+                              ),));
+                          }else{
+                            return GestureDetector(
+                                onTap: (){
+                                  Get.offNamed(RoutesHelper.getAddressPage());
+                                },
+                                child: ProfileWidget(
+                                  bigText: BigText(text:'Your address' ,),
+                                  appIcon: AppIcon(
+                                    icon: Icons.location_on,
+                                    backgroundColor: Colors.blueGrey,
+                                    iconColor: Colors.white,
+                                    iconSize: Dimensions.Height10 * 5 / 2,
+                                    size: Dimensions.Height10 * 5,
+                                  ),));
+                          }
+
+                        }),
                         SizedBox(
                           height: Dimensions.Height15 * 2,
                         ),
@@ -122,9 +146,10 @@ class ProfilePage extends StatelessWidget {
                               Get.find<AuthController>().ClearSharedData();
                               Get.find<CartController>().clear();
                               Get.find<CartController>().clearCartHistory();
+                              Get.find<LocationController>().clearAddressList();
                               Get.offNamed(RoutesHelper.getSingInPage());
                             } else {
-                              Get.offNamed(RoutesHelper.getInitial());
+                              Get.offNamed(RoutesHelper.getSingInPage());
                             }
                           },
                           child: ProfileWidget(
