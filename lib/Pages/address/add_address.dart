@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food/Moudel/address_model.dart';
+import 'package:food/Pages/address/pick_address_map.dart';
 import 'package:food/Widgets/Big_text.dart';
 import 'package:food/Widgets/app_text_filed.dart';
 import 'package:food/controllers/auth_controller.dart';
@@ -21,7 +22,7 @@ class AddAddressPage extends StatefulWidget {
 }
 
 class _AddAddressPageState extends State<AddAddressPage> {
-  TextEditingController _addressController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
   final TextEditingController _contactPersonName = TextEditingController();
   final TextEditingController _contactPersonNumber = TextEditingController();
   late bool _isLogged;
@@ -38,6 +39,9 @@ class _AddAddressPageState extends State<AddAddressPage> {
       Get.find<UserController>().getUserInFo();
     }
     if (Get.find<LocationController>().addressList.isNotEmpty) {
+      if(Get.find<LocationController>().getUserAddressFormLocalStorage()==""){
+        Get.find<LocationController>().saveUserAddress(Get.find<LocationController>().addressList.last);
+      }
       Get.find<LocationController>().getUserAddress();
       _cameraPosition = CameraPosition(
           target: LatLng(
@@ -76,7 +80,11 @@ class _AddAddressPageState extends State<AddAddressPage> {
                   '${locationController.placemark.locality ?? ''}'
                   '${locationController.placemark.postalCode ?? ''}'
                   '${locationController.placemark.country ?? ''}';
-              print('address in my viwe is ' + _addressController.text);
+              if(_addressController.text.isEmpty){
+                _addressController.text = "Syria Damasucse" ;
+              }else{
+                _addressController.text = _addressController.text ;
+              }
               return SingleChildScrollView(
                   child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,6 +104,14 @@ class _AddAddressPageState extends State<AddAddressPage> {
                         GoogleMap(
                           initialCameraPosition: CameraPosition(
                               target: _initialPosition, zoom: 17),
+                          onTap: (latLng){
+                            Get.toNamed(RoutesHelper.getPickAddress(),
+                            arguments: PickAddressMap(fromSignup: false,
+                              fromAddress: true,
+                              googleMapController: locationController.mapController,
+
+                            ));
+                          },
                           zoomControlsEnabled: false,
                           compassEnabled: false,
                           indoorViewEnabled: true,
@@ -213,44 +229,6 @@ class _AddAddressPageState extends State<AddAddressPage> {
             return Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Container(
-                //   padding: EdgeInsets.only(
-                //       right: Dimensions.Width20 * 2.5,
-                //       left: Dimensions.Width20 * 2.5,
-                //       top: Dimensions.Height10,
-                //       bottom: Dimensions.Height10),
-                //   child: Row(
-                //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //     children: [
-                //       GestureDetector(
-                //         onTap: () {
-                //        //   locationController.setQuantity(false);
-                //         },
-                //         child: AppIcon(
-                //             iconSize: Dimensions.icon15,
-                //             iconColor: Colors.white,
-                //             backgroundColor: AppColors.mainColor,
-                //             icon: Icons.remove),
-                //       ),
-                //       BigText(
-                //         text:
-                //         '\$ TestX' ,
-                //         color: AppColors.mainBlackColor,
-                //         size: Dimensions.font26,
-                //       ),
-                //       GestureDetector(
-                //         onTap: () {
-                //           //controller.setQuantity(true);
-                //         },
-                //         child: AppIcon(
-                //             iconSize: Dimensions.icon15,
-                //             iconColor: Colors.white,
-                //             backgroundColor: AppColors.mainColor,
-                //             icon: Icons.add),
-                //       ),
-                //     ],
-                //   ),
-                // ),
                 Container(
                   height: Dimensions.Height20 * 8,
                   padding: EdgeInsets.only(

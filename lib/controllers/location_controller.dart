@@ -52,15 +52,15 @@ class LocationController extends GetxController implements GetxService {
     _mapController = mapController;
   }
 
-  void updatePosition(CameraPosition cameraPosition, bool fromAddress) async {
+  void updatePosition(CameraPosition position, bool fromAddress) async {
     if (_updateAddressData) {
       _loading = true;
       update();
       try {
         if (fromAddress) {
           _position = Position(
-              longitude: position.longitude,
-              latitude: position.latitude,
+              longitude: position.target.longitude,
+              latitude: position.target.latitude,
               timestamp: DateTime.now(),
               accuracy: 1,
               altitude: 1,
@@ -69,8 +69,8 @@ class LocationController extends GetxController implements GetxService {
               speedAccuracy: 1);
         } else {
           _pickPosition = Position(
-              longitude: position.longitude,
-              latitude: position.latitude,
+              longitude: position.target.longitude,
+              latitude: position.target.latitude,
               timestamp: DateTime.now(),
               accuracy: 1,
               altitude: 1,
@@ -80,7 +80,7 @@ class LocationController extends GetxController implements GetxService {
         }
         if (_changeAddress) {
           String _address = await getAddressfromGeocode(
-              LatLng(position.latitude, position.longitude));
+              LatLng(position.target.latitude, position.target.longitude));
           fromAddress
               ? _placemark = Placemark(name: _address)
               : _pickPlacemark = Placemark(name: _address);
@@ -88,14 +88,17 @@ class LocationController extends GetxController implements GetxService {
       } catch (e) {
         print(e);
       }
+      _loading =false ;
+      update();
     }
   }
 
-  Future<String> getAddressfromGeocode(LatLng latLng) async  {
+  Future<String> getAddressfromGeocode(LatLng latlng) async  {
     String _address = 'Unknown Location Found';
-    Response response = await locationRepo.getAddressfromGeocode(latLng);
-    if (response.body['status'] == 'OK') {
-      _address = response.body['results'][0]['formatted_address'].toString();
+    Response response = await locationRepo.getAddressfromGeocode(latlng);
+    if (response.body["status"] == 'OK') {
+      _address = response.body["results"][0]['formatted_address'].toString();
+
     } else {
       print('Error getting the google api');
     }
@@ -163,5 +166,8 @@ class LocationController extends GetxController implements GetxService {
      _allAddresslist=[];
      _addressList=[];
      update();
+  }
+  String getUserAddressFormLocalStorage(){
+     return locationRepo.getUserAddress();
   }
 }

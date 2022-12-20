@@ -10,7 +10,6 @@ class AppConstants{
   static const String USER_ADDREESS_URL ="user_address";
   static const String ADD_ADDRESS_USER = '/api/v1/customer/address/add';
   static const String ADDRESS_LIST_URL = '/api/v1/customer/address/list';
-
   static const String GEOCODE_URL ="/api/v1/config/geocode-api";
 
 

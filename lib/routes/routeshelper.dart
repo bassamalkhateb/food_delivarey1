@@ -8,6 +8,8 @@ import 'package:food/Pages/home/home_page_sec.dart';
 import 'package:food/Pages/splash_page/splash_page.dart';
 import 'package:get/get.dart';
 
+import '../Pages/address/pick_address_map.dart';
+
 
 
 class RoutesHelper{
@@ -18,9 +20,12 @@ class RoutesHelper{
   static const String recommendedFood ="/recommended-food";
   static const String singIn ="/sing-in";
   static const String address ="/address";
+  static const String pickAddress ="/pickAddress";
+
 
   static String getSingInPage()=>'$singIn';
   static String getAddressPage()=>'$address';
+  static String getPickAddress()=>'$pickAddress';
   static String getInitial()=>'$initial';
   static String getSplashFood()=>'$splashFood';
   static String getPopularFood(int pageId, String page)=>'$popularFood?pageId=$pageId&page=$page';
@@ -36,6 +41,10 @@ class RoutesHelper{
     GetPage(name: address, page: () {
 
       return AddAddressPage();
+    },transition: Transition.fadeIn),
+    GetPage(name: singIn, page: () {
+      PickAddressMap _pickAddess = Get.arguments ;
+      return _pickAddess;
     },transition: Transition.fadeIn),
     GetPage(name: initial, page: () {
 
